@@ -4,7 +4,7 @@ phases:
     commands:
         - echo Logging in to Docker Hub...
         - DOCKER_USERNAME=$(aws secretsmanager get-secret-value --secret-id docker_hub --query 'SecretString' --output text | jq -r '.docker_hub_user_name')
-        - DOCKER_PASSWORD=$(aws secretsmanager get-secret-value --secret-id docker_hub --query 'SecretString' --output text | jq -r '.docker_hub_pwd')`
+        - DOCKER_PASSWORD=$(aws secretsmanager get-secret-value --secret-id docker_hub --query 'SecretString' --output text | jq -r '.docker_hub_pwd')
         - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
         - echo Logging in to Amazon ECR...
         - aws --version
